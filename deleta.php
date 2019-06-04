@@ -3,13 +3,12 @@
         $conecta = mysqli_connect("localhost","jussimar","","crud"); 
                                 //servidor , usuario banco, senha, nome do banco
     
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
+        $id = $_GET['id'];
         
-        $query = "insert into pessoa values (null, '$nome', '$email');";
+        $query = "delete from pessoa where cd_pessoa = $id";
         
         mysqli_query($conecta,$query);
-        echo "Cadastro realizado com sucesso";
+        echo "registro removido com sucesso";
     } catch (Exception $e ) {
-        echo "Erro ao cadastrar: ".$e;
+        echo "Erro ao deletar: ".$e;
     }

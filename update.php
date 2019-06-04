@@ -1,15 +1,17 @@
 <?php
+
     try {
         $conecta = mysqli_connect("localhost","jussimar","","crud"); 
                                 //servidor , usuario banco, senha, nome do banco
-    
+        
+        $codigo = $_POST['codigo'];
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         
-        $query = "insert into pessoa values (null, '$nome', '$email');";
+        $query = "update pessoa set nm_pessoa='$nome',ds_email='$email' where cd_pessoa = $codigo";
         
         mysqli_query($conecta,$query);
-        echo "Cadastro realizado com sucesso";
+        echo "alteração realizado com sucesso";
     } catch (Exception $e ) {
         echo "Erro ao cadastrar: ".$e;
     }
